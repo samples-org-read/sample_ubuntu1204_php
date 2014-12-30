@@ -1,6 +1,6 @@
 language: php
 
-build_image: shippableimages/ubuntu1404_php
+build_image: shippableimages/ubuntu1404_php:0.0.1
 
 php:
 
