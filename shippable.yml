@@ -10,11 +10,9 @@ php:
   - 5.6
  
  
- 
-env:
- global:
-  - mkdir -p shippable/codecoverage
-  - mkdir -p shippable/testresults
+before_script:
+  - cd $SHIPPABLE_REPO_DIR && mkdir -p shippable/codecoverage
+  - cd $SHIPPABLE_REPO_DIR && mkdir -p shippable/testresults
 
 before_install:
   - export PATH=$HOME/.phpenv/bin:$HOME/.phpenv/extensions:$PATH && eval "$(phpenv init -)"
@@ -22,7 +20,17 @@ before_install:
   - php --version
 
 script:
-  - phpunit  --log-junit shippable/testresults/junit.xml --coverage-xml shippable/codecoverage tests/calculator_test.php
+  - cd $SHIPPABLE_REPO_DIR && phpunit  --log-junit shippable/testresults/junit.xml --coverage-xml shippable/codecoverage tests/calculator_test.php
 
+commit_container: shipci/php1204
+
+images:
+  image:
+    build:
+     type: docker
+     name: vidyar/php_1204_img
+     tag: latest
+    # cache: true
+     code_path: /home/root/src
 
 archive: true
