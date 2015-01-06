@@ -28,7 +28,7 @@ images:
   image:
     build:
      type: docker
-     name: vidyar/php_1204_img
+     name: shipci/php_1204_img
      tag: latest
     # cache: true
      code_path: /home/root/src
