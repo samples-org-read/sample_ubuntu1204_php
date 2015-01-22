@@ -24,13 +24,13 @@ script:
 
 commit_container: shipci/php1204
 
-images:
-  image:
-    build:
-     type: docker
-     name: shipci/php_1204_img
-     tag: latest
+#images:
+ # image:
+  #  build:
+   #  type: docker
+    # name: shipci/php_1204_img
+    # tag: latest
     # cache: true
-     code_path: /home/root/src
+     #code_path: /home/root/src
 
 archive: true
