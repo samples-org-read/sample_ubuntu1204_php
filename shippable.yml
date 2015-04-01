@@ -19,7 +19,8 @@ before_install:
   - phpenv global $SHIPPABLE_PHP_VERSION
   - php --version
 
-script:
+script: php --version
+after_script:
   - cd $SHIPPABLE_REPO_DIR && phpunit  --log-junit shippable/testresults/junit.xml --coverage-xml shippable/codecoverage tests/calculator_test.php
 
 commit_container: shipci/php1204
@@ -35,3 +36,7 @@ commit_container: shipci/php1204
 
 
 archive: true
+after_success:
+- echo "success"
+after_failure:
+- echo "failed"
